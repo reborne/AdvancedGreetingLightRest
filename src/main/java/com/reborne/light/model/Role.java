@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Role {
+
     @Id
     @GeneratedValue
     private Long id;
