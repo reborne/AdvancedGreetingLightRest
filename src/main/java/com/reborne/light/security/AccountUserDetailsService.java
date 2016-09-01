@@ -26,7 +26,11 @@ public class AccountUserDetailsService implements UserDetailsService {
             throws UsernameNotFoundException {
         Account account = accountService.findByUsername(username);
         if(account == null) {
-            return null;
+            throw new UsernameNotFoundException("User " + username + "not found");
+        }
+
+        if(account.getRoles() == null || account.getRoles().isEmpty()) {
+            throw new UsernameNotFoundException("User unable to authorize");
         }
 
         Collection<GrantedAuthority> userGrantedAuthority = new ArrayList<GrantedAuthority>();
@@ -38,9 +42,9 @@ public class AccountUserDetailsService implements UserDetailsService {
         User userDetails = new User(
                 account.getUsername(),
                 account.getPassword(),
-                account.isExpired(),
-                account.isLocked(),
-                account.isCredentialExpired(),
+                !account.isExpired(),
+                !account.isLocked(),
+                !account.isCredentialExpired(),
                 account.isEnabled(),
                 userGrantedAuthority
         );
