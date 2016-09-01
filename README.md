@@ -5,7 +5,7 @@ Spring REST API with Spring Security Integration (customized configuration)
 ## Overall
 This application shows how to implement Spring Security with custom configuration<br>
 Initially, boilerplate has been taken from <u><b>GreetingLightRest</b></u> application,
-which can be found <a href="https://github.com/reborne/GreetingLightRest"> here </a>
+which can be found <a href="https://github.com/reborne/GreetingLightRest"> here </a><br>
 Business layer designed so every Account can have multiple roles
 
 #Project contents:
